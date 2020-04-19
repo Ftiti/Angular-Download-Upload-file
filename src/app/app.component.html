@@ -1,0 +1,33 @@
+
+
+
+  <div >
+    <h1>Test Front end</h1>
+    <table>
+       <thead>
+          <tr>
+             <th>Nom</th>
+             <th>Creation</th>
+             <th>Modification</th>
+             <th>Type</th>
+             <th>Actions</th>
+          </tr>
+       </thead>
+       <tbody>
+          <tr *ngFor="let item of lists">
+             <td>{{ item.name }}</td>
+             <td>{{ item.creation  | date: 'dd/MM/yyyy:HH:mm'}}</td>
+             <td>{{ item.modification | date: 'dd/MM/yyyy:HH:mm'}}</td>
+             <td *ngIf="item.folder">D</td>
+             <td *ngIf="!item.folder">F</td>
+             <td>
+                <button *ngIf="!item.folder" type="button" (click)="download(item.id,item.name)">Download</button>
+             </td>
+          </tr>
+       </tbody>
+    </table>
+ </div>
+ <div>
+   <input type="file" ng2FileSelect [uploader]="uploader">
+   <button (click)="uploader.uploadAll()">Upload </button>
+</div>
